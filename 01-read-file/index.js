@@ -1,6 +1,9 @@
-let fs = require('fs');
-fs.readFile('./01-read-file/text.txt', 'utf8', function(error, fileContent) {
-    console.log('Асинхронное чтение файла');
-    if (error) throw error;
-    console.log(fileContent);
+const fs = require('fs');
+const stream = new fs.ReadStream('./01-read-file/text.txt', 'utf8');
+stream.on('readable', function() {
+    const data = stream.read();
+    console.log(data);
+});
+stream.on('done', function() {
+    console.log('done');
 });
