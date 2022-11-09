@@ -10,6 +10,8 @@ async function copyDir(sourceFolderPath, copyFolderPath) {
         let sourceFile = path.join(sourceFolderPath, file.name);
         let copyFil = path.join(copyFolderPath, file.name);
         await copyFile(sourceFile, copyFil);
+        console.log(`${file.name} copied`);
     }
+    console.log('FOLDER COPIED');
 }
 copyDir(sourceFolderPath, copyFolderPath);
